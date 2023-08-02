@@ -1,0 +1,173 @@
+<div class="container-fluid py-3">
+  <h1>Angular 14 Highcharts 11</h1>
+  <div class="row mt-5">
+    <h2 class="col-12">Non graph just big number module</h2>
+    <app-big-number
+      class="col-3"
+      [title]="'Total Sales'"
+      [mainValue]="'65 widgets'"
+      [secondaryValue]="'+20 widgets'"
+      [secondaryColor]="'green'"
+    ></app-big-number>
+    <app-big-number
+      class="col-3"
+      [title]="'last year Sales'"
+      [mainValue]="'2 widgets'"
+    ></app-big-number>
+    <app-big-number
+      class="col-3"
+      [title]="'Next year Sales'"
+      [mainValue]="'90 widgets'"
+      [secondaryValue]="'+20 widgets'"
+      [secondaryColor]="'purple'"
+    ></app-big-number>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">regular chart</h2>
+    <div id="basic-line-chart"></div>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">custom chart</h2>
+    <div class="col-12">
+      <ul>
+        <li>color changes</li>
+        <li>font changes</li>
+        <li>font sizes</li>
+        <li>custom tooltip text and colors in those tooltips</li>
+      </ul>
+    </div>
+    <div id="custom-line-chart"></div>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">outside click actions listeners</h2>
+    <div id="click-actions-line-chart"></div>
+    <button class="action1">action 1 add stuff</button>
+    <button class="action2">action 2 remove stuff</button>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">outside filter action (send updated data to chart)</h2>
+    <div class="col-12">
+      <ul>
+        <li>custom data in series so we can have special stuff in tooltip.</li>
+        <li>changes to gridlines</li>
+        <li>filter data from external actions</li>
+        <li>on click go to location</li>
+      </ul>
+    </div>
+    <form [formGroup]="customBarChartForm">
+      <select
+        class="col-3"
+        (change)="barChartOptionChange()"
+        formControlName="class"
+      >
+        <option [ngValue]="null">All classes</option>
+        <option *ngFor="let class of classes" [ngValue]="class.id">
+          {{ class.name }}
+        </option>
+      </select>
+      <select
+        class="col-3"
+        (change)="barChartOptionChange()"
+        formControlName="grade"
+      >
+        <option [ngValue]="null">All grades</option>
+        <option *ngFor="let grade of grades" [ngValue]="grade.id">
+          {{ grade.name }}
+        </option>
+      </select>
+      <div id="custom-bar-chart"></div>
+    </form>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">gantt timeframe chart</h2>
+    <div id="gantt-chart"></div>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">switch from table to graph</h2>
+    <button (click)="chartSwitch()">switch action</button>
+    <div class="col-12">
+      <ul>
+        <li>does drilldown</li>
+        <li>hide chart/show table</li>
+      </ul>
+    </div>
+
+    <div id="hide-chart"></div>
+    <div *ngIf="hideChart">
+      <table>
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+            <th>Column 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>combination</td>
+            <td>last</td>
+            <td>nearer</td>
+            <td>remove</td>
+            <td>pocket</td>
+          </tr>
+          <tr>
+            <td>build</td>
+            <td>mainly</td>
+            <td>driver</td>
+            <td>least</td>
+            <td>spell</td>
+          </tr>
+          <tr>
+            <td>cheese</td>
+            <td>sun</td>
+            <td>driven</td>
+            <td>bark</td>
+            <td>means</td>
+          </tr>
+          <tr>
+            <td>widely</td>
+            <td>camp</td>
+            <td>jungle</td>
+            <td>rest</td>
+            <td>park</td>
+          </tr>
+          <tr>
+            <td>would</td>
+            <td>faster</td>
+            <td>activity</td>
+            <td>writing</td>
+            <td>attached</td>
+          </tr>
+          <tr>
+            <td>crack</td>
+            <td>specific</td>
+            <td>labor</td>
+            <td>drive</td>
+            <td>thou</td>
+          </tr>
+          <tr>
+            <td>fruit</td>
+            <td>fought</td>
+            <td>walk</td>
+            <td>slowly</td>
+            <td>liquid</td>
+          </tr>
+          <tr>
+            <td>energy</td>
+            <td>fastened</td>
+            <td>past</td>
+            <td>till</td>
+            <td>help</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">one chart does something to another chart</h2>
+    <div id="item1-chart" class="col-8"></div>
+    <div id="item2-chart" class="col-4"></div>
+  </div>
+</div>

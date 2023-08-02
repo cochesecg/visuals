@@ -1,0 +1,229 @@
+<div class="container-fluid py-3">
+  <h1>Angular 14 Fusion 3.20</h1>
+  <!-- <div class="row mt-5">
+    <h2 class="col-12">regular chart</h2>
+    <fusioncharts
+      width="100%"
+      type="msline"
+      dataFormat="json"
+      [dataSource]="regularChartDataSource"
+    >
+    </fusioncharts>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">custom chart</h2>
+    <div class="col-12">
+      <ul>
+        <li>color changes</li>
+        <li>font changes</li>
+        <li>font sizes</li>
+        <li>
+          custom tooltip text and colors in those tooltips
+          <span class="red"
+            >(failed tooltip logic on values can't do coloring based on
+            them)</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div id="custom-line-chart"></div>
+    <fusioncharts
+      width="100%"
+      type="msline"
+      dataFormat="json"
+      [dataSource]="customChartDataSource"
+    >
+    </fusioncharts>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">outside click actions listeners</h2>
+    <fusioncharts
+      width="100%"
+      type="msline"
+      dataFormat="json"
+      [dataSource]="clickActionChartDataSource"
+    >
+    </fusioncharts>
+    <button class="action1">action 1 add stuff</button>
+    <button class="action2">action 2 remove stuff</button>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">outside filter action (send updated data to chart)</h2>
+    <div class="col-12">
+      <ul>
+        <li>
+          custom data in series so we can have special stuff in tooltip.<span
+            class="red"
+            >couldn't do custom values in tooltip</span
+          >
+        </li>
+        <li>
+          changes to gridlines
+          <span class="red">couldn't put a tick in on the bar chart</span>
+        </li>
+        <li>filter data from external actions</li>
+        <li>on click go to location</li>
+      </ul>
+    </div>
+    <form [formGroup]="customBarChartForm">
+      <select
+        class="col-3"
+        (change)="barChartOptionChange()"
+        formControlName="class"
+      >
+        <option [ngValue]="null">All classes</option>
+        <option *ngFor="let class of classes" [ngValue]="class.id">
+          {{ class.name }}
+        </option>
+      </select>
+      <select
+        class="col-3"
+        (change)="barChartOptionChange()"
+        formControlName="grade"
+      >
+        <option [ngValue]="null">All grades</option>
+        <option *ngFor="let grade of grades" [ngValue]="grade.id">
+          {{ grade.name }}
+        </option>
+      </select>
+      <fusioncharts
+        width="100%"
+        type="bar2d"
+        dataFormat="json"
+        [dataSource]="customBarChartDataSource"
+        (dataplotClick)="barChartClick($event)"
+      >
+      </fusioncharts>
+    </form>
+  </div> -->
+  <div class="row mt-5">
+    <h2 class="col-12">gantt timeframe chart</h2>
+    <div id="gantt-chart"></div>
+    <fusioncharts
+      width="100%"
+      height="400"
+      type="gantt"
+      dataFormat="json"
+      [dataSource]="ganttChartDataSource"
+    >
+    </fusioncharts>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">switch from table to graph</h2>
+    <button (click)="chartSwitch()">switch action</button>
+    <div class="col-12">
+      <ul>
+        <li>does drilldown</li>
+        <li>hide chart/show table</li>
+      </ul>
+    </div>
+
+    <fusioncharts
+      *ngIf="!hideChart"
+      width="100%"
+      type="column2d"
+      dataFormat="json"
+      [dataSource]="barDrilldownChartDataSouce"
+    >
+    </fusioncharts>
+    <div *ngIf="hideChart">
+      <table>
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+            <th>Column 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>combination</td>
+            <td>last</td>
+            <td>nearer</td>
+            <td>remove</td>
+            <td>pocket</td>
+          </tr>
+          <tr>
+            <td>build</td>
+            <td>mainly</td>
+            <td>driver</td>
+            <td>least</td>
+            <td>spell</td>
+          </tr>
+          <tr>
+            <td>cheese</td>
+            <td>sun</td>
+            <td>driven</td>
+            <td>bark</td>
+            <td>means</td>
+          </tr>
+          <tr>
+            <td>widely</td>
+            <td>camp</td>
+            <td>jungle</td>
+            <td>rest</td>
+            <td>park</td>
+          </tr>
+          <tr>
+            <td>would</td>
+            <td>faster</td>
+            <td>activity</td>
+            <td>writing</td>
+            <td>attached</td>
+          </tr>
+          <tr>
+            <td>crack</td>
+            <td>specific</td>
+            <td>labor</td>
+            <td>drive</td>
+            <td>thou</td>
+          </tr>
+          <tr>
+            <td>fruit</td>
+            <td>fought</td>
+            <td>walk</td>
+            <td>slowly</td>
+            <td>liquid</td>
+          </tr>
+          <tr>
+            <td>energy</td>
+            <td>fastened</td>
+            <td>past</td>
+            <td>till</td>
+            <td>help</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <h2 class="col-12">one chart does something to another chart</h2>
+    <div class="col-12">
+      <ul>
+        <li><span class="red">can't share tooltip in pareto?</span></li>
+      </ul>
+    </div>
+    <div id="item1-chart" class="col-8">
+      <fusioncharts
+        width="100%"
+        type="pareto2d"
+        dataFormat="json"
+        [dataSource]="chart1DataSource"
+        (chartClick)="chart1Click($event)"
+      >
+      </fusioncharts>
+    </div>
+    <div class="col-4">
+      <fusioncharts
+        width="100%"
+        type="pie2d"
+        dataFormat="json"
+        [dataSource]="chart2DataSource"
+        (initialized)="chart2DataInitialized($event)"
+      >
+      </fusioncharts>
+    </div>
+  </div>
+</div>

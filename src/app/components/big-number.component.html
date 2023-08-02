@@ -1,0 +1,11 @@
+<div class="big-number">
+  <div class="big-number__text" *ngIf="title">{{ title }}</div>
+  <div class="big-number__main-value" *ngIf="mainValue">{{ mainValue }}</div>
+  <div
+    *ngIf="secondaryValue"
+    class="big-number__secondary-value"
+    [style.color]="secondaryColor"
+  >
+    {{ secondaryValue }}
+  </div>
+</div>
